@@ -13,24 +13,25 @@
                 <th scope='col'>Belt Title</th>
                 <th scope='col'>Read Review</th>
                 <th scope='col'>Write Review</th>
-                <th scope='col'>Action</th>
                 <th scope='col'>Average Stars</th>
                 <!-- <th scope='col'>RouterLink</th> -->
-                <th scope='col'>Nested Comp</th>
+                <!-- <th scope='col'>Nested Comp</th> -->
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let belt of belts">
                 <td>{{belt.title}} </td>
-                <td>{{belt.description}}</td>
+                <!-- <td>{{belt.description}}</td> -->
                 <td><a class='btn btn-info' [routerLink]="['/movies', belt._id]">Read Review</a></td>
                 <td><a class='btn btn-info' [routerLink]="['/movies',belt._id,'review']" >Write Review</a></td>
                 <!-- <td><a class='btn btn-info' [routerLink]="['/editchild', belt._id]">Edit Child (routerLink)</a><a class='btn btn-danger' (click)=delete(belt)>Delete</a></td> -->
                 <td>{{belt.avgStar}}</td>
-                <td><a class='btn btn-info' (click)="selectThisBelt(belt)">Edit Child (see below)</a><a class='btn btn-danger' (click)=delete(belt)>Delete</a></td>
+                <!-- <td><a class='btn btn-info' (click)="selectThisBelt(belt)">Edit Child (see below)</a><a class='btn btn-danger' (click)=delete(belt)>Delete</a></td> -->
             </tr>
         </tbody>
     </table>
+    <!-- <app-edit *ngIf="selectBelt" [editBelt]="selectBelt"></app-edit> -->
     <app-edit-child *ngIf="selectedBelt" [editBelt]="selectedBelt" (aBeltEmitter)="editchild_update($event)"></app-edit-child>
-    <router-outlet></router-outlet> For the child-component editChild
+    <router-outlet></router-outlet>
+
 </div>
