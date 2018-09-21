@@ -1,0 +1,28 @@
+<div class="container wrapper">
+    <h1> At '/all' page </h1>
+    <a class='btn btn-primary' [routerLink]="['']">Back to Home</a>
+
+    <ul>
+        <li>List Item 1</li>
+    </ul>
+    <a [routerLink]="['/new']" class='btn btn-primary'>Create new</a>
+    <h2 *ngIf="error">{{error}}</h2>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th scope='col'>Belt Title</th>
+                <th scope='col'>Belt Description</th>
+                <th scope='col'>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let belt of belts">
+                <td>{{belt.title}} </td>
+                <td>{{belt.description}}</td>
+                <td><a class='btn btn-info' [routerLink]="['/edit', belt._id]">Edit</a><a class='btn btn-danger' (click)=delete(belt)>Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <router-outlet></router-outlet>
+</div>

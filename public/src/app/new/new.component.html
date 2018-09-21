@@ -1,0 +1,32 @@
+<div class="container wrapper">
+  <h1> Create new belt </h1>
+    <form (submit)="onSubmit()">
+        <div class="form-group row">
+          <label for="title" class="col-sm-2 col-form-label">Title</label>
+          <div class="col-sm-10">
+            <input type="title" required minlength="3" maxlength="24" class="form-control" name="title" [(ngModel)]="newBelt.title" #newTitle="ngModel" placeholder="Enter Title here..">
+            <p class='error' *ngIf="newTitle.invalid && (newTitle.dirty || newTitle.touched)">Title not complete</p>
+            <!-- <p class='error' *ngIf="newTitle.errors">Invalid title input</p> -->
+            <p class='error' *ngIf="error['title']">{{error['title']['message']}}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="description" class="col-sm-2 col-form-label">Description</label>
+          <div class="col-sm-10">
+            <input type="text" placeholder="Enter Description here.." required minlength="3" maxlength="50" class="form-control" name="description" [(ngModel)]="newBelt.description" #newDesc="ngModel">
+            <p class='error' *ngIf="newDesc.invalid && (newDesc.dirty || newDesc.touched)">Description not complete</p>
+            <p class='error' *ngIf="error['description']">{{error['description']['message']}}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button *ngIf="newTitle.valid && newDesc.valid" type="submit" class="btn btn-primary">Create!</button>
+            <p *ngIf="success">{{success}}</p>
+            <!-- <p>{{editProduct.title | json}} {{editProduct.price | json}}</p> -->
+          </div>
+        </div>
+      </form>
+      <a [routerLink]="['/all']" class="btn btn-primary">Back to show all</a>
+      <br><br>
+      <h5>The submit buttom will appear after valid inputs</h5>
+</div>

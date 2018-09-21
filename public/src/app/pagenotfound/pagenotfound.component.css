@@ -1,0 +1,9 @@
+*{
+    text-align:center;
+    /* color:orangered; */
+    background-color:aliceblue;
+    border-radius:10px;
+}
+div.wrapper{
+    padding:10%;
+}
