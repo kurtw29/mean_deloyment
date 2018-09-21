@@ -23,6 +23,18 @@ export class HttpService {
     return this._http.post('/belt', data);
   }
 
+  //testing stage
+  addReview(reviewData){
+    console.log("service.ts / addReview(data), reviewData:", reviewData);
+    return this._http.post('/belt/'+reviewData['id'], reviewData);
+  }
+
+  //remove review
+  removeReview(data){
+    console.log("service.ts / removeReview(data): data: ", data)
+    return this._http.delete("/beltReview/"+data.mvid+"&:"+data._id);
+  }
+
   edit(data){
     console.log("service.ts / edit(data), data: ", data);
     return this._http.put('/belt/'+data['_id'], data);

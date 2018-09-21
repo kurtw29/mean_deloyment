@@ -17,7 +17,7 @@ export class EditComponent implements OnInit {
   editBelt: any;
 
   ngOnInit() {
-    this.editBelt ={ title: "", dscription: ""}
+    this.editBelt ={ title: ""}
     // this.success = "";
     this._route.params.subscribe((params: Params) =>{
       this.getById(params['id']);
@@ -32,6 +32,7 @@ export class EditComponent implements OnInit {
       if(data['message'] == true){
         this.editBelt = data['belt']
         console.log('this.editBelt: ', this.editBelt)
+        // this.ngOnInit();
       }else{
         this.error = "Unable to load information"
       }
@@ -60,9 +61,27 @@ export class EditComponent implements OnInit {
     let obs = this._http.remove(this.editBelt['_id']);
     obs.subscribe(data =>{
       if(data['message'] == true){
-        this._router.navigate(['/all']);
+        this._router.navigate(['/movies']);
       }else{
         this.error = "Sorry, unable to retrive products."
+      }
+    })
+  }
+  //this is for the black belt feature
+  deleteReview(data){
+    this.error = "";
+    console.log('edit.comp.ts // deleteReview(data), data: ', data)
+    data.mvid = this.editBelt['_id'];
+    console.log('edit.comp.ts // deleteReview(data), data: ', data)
+    let obs = this._http.removeReview(data);
+    obs.subscribe(data =>{
+      if(data['message'] == true){
+        console.log("deleting rating: ", data)
+        // this._router.navigate(['/movies']);
+        this.ngOnInit();
+      }else{
+        this.error = "Sorry, unable to retrive products."
+        console.log("deleting rating ERROR: ", data)
       }
     })
   }

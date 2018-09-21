@@ -1,0 +1,68 @@
+<div class="container wrapper">
+  <h1>Edit CHILD Belt</h1>
+    <form (submit)="onSubmit()">
+        <div class="form-group row">
+          <label for="title" class="col-sm-2 col-form-label">Title</label>
+          <div class="col-sm-10">
+            <input type="title" required minlength="3" maxlength="24" class="form-control" name="title" [value]='editBelt.title' [(ngModel)]="editBelt.title" #editTitle="ngModel">
+            <p class='error' *ngIf="editTitle.invalid && (editTitle.dirty || editTitle.touched)">Title not complete</p>
+            <p class='error' *ngIf="error['title']">{{error['title']['message']}}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="description" class="col-sm-2 col-form-label">Description</label>
+          <div class="col-sm-10">
+            <input type="text" required minlength="3" maxlength="50" class="form-control" name="description" [value]="editBelt.description" [(ngModel)]="editBelt.description" #editDesc="ngModel">
+            <p class='error' *ngIf="editDesc.invalid && (editDesc.dirty || editDesc.touched)">Description not complete</p>
+            <p class='error' *ngIf="error['description']">{{error['description']['message']}}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button *ngIf="editTitle.valid && editDesc.valid" type="submit" class="btn btn-primary">Edit!</button>
+            <a (click)="delete()" class="btn btn-danger">Delete</a>
+            <p *ngIf="success">{{success}}</p>
+            <p *ngIf="del_error">{{del_error}}</p>
+            <!-- <p>{{editProduct.title | json}} {{editProduct.price | json}}</p> -->
+          </div>
+        </div>
+      </form>
+      <button (click)="callAll($event)" class="btn btn-primary">Update List all</button>
+      <!-- <a [routerLink]="['/all']" class="btn btn-primary">Back to show all</a> -->
+      <br><br>
+      <h5>The Edit buttom will appear after all inpurts are valid</h5>
+</div>
+
+<!-- <div class="container wrapper">
+  <h1>Edit CHILD Belt</h1>
+    <form (submit)="onSubmit()">
+        <div class="form-group row">
+          <label for="title" class="col-sm-2 col-form-label">Title</label>
+          <div class="col-sm-10">
+            <input type="title" required minlength="3" maxlength="24" class="form-control" name="title" [value]='editBelt.title' [(ngModel)]="editBelt.title" #editTitle="ngModel">
+            <p class='error' *ngIf="editTitle.invalid && (editTitle.dirty || editTitle.touched)">Title not complete</p>
+            <p class='error' *ngIf="error['title']">{{error['title']['message']}}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="description" class="col-sm-2 col-form-label">Description</label>
+          <div class="col-sm-10">
+            <input type="text" required minlength="3" maxlength="50" class="form-control" name="description" [value]="editBelt.description" [(ngModel)]="editBelt.description" #editDesc="ngModel">
+            <p class='error' *ngIf="editDesc.invalid && (editDesc.dirty || editDesc.touched)">Description not complete</p>
+            <p class='error' *ngIf="error['description']">{{error['description']['message']}}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button *ngIf="editTitle.valid && editDesc.valid" type="submit" class="btn btn-primary">Edit!</button>
+            <a (click)="delete()" class="btn btn-danger">Delete</a>
+            <p *ngIf="success">{{success}}</p>
+            <p *ngIf="del_error">{{del_error}}</p> -->
+            <!-- #########<p>{{editProduct.title | json}} {{editProduct.price | json}}</p> ########-->
+          <!-- </div>
+        </div>
+      </form>
+      <a [routerLink]="['/all']" class="btn btn-primary">Back to show all</a>
+      <br><br>
+      <h5>The Edit buttom will appear after all inpurts are valid</h5>
+</div> -->

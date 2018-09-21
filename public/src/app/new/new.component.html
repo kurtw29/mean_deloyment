@@ -1,32 +1,59 @@
 <div class="container wrapper">
-  <h1> Create new belt </h1>
+  <h1> Submit a movie and your review </h1>
     <form (submit)="onSubmit()">
         <div class="form-group row">
-          <label for="title" class="col-sm-2 col-form-label">Title</label>
+          <label for="title" class="col-sm-2 col-form-label">Movie Title</label>
           <div class="col-sm-10">
             <input type="title" required minlength="3" maxlength="24" class="form-control" name="title" [(ngModel)]="newBelt.title" #newTitle="ngModel" placeholder="Enter Title here..">
             <p class='error' *ngIf="newTitle.invalid && (newTitle.dirty || newTitle.touched)">Title not complete</p>
             <!-- <p class='error' *ngIf="newTitle.errors">Invalid title input</p> -->
             <p class='error' *ngIf="error['title']">{{error['title']['message']}}</p>
+            <!-- <p class='error' *ngIf="error['title']">Review info cannot be entered without valid "Title"</p> -->
           </div>
         </div>
         <div class="form-group row">
-          <label for="description" class="col-sm-2 col-form-label">Description</label>
+          <label for="name" class="col-sm-2 col-form-label">Your name</label>
           <div class="col-sm-10">
-            <input type="text" placeholder="Enter Description here.." required minlength="3" maxlength="50" class="form-control" name="description" [(ngModel)]="newBelt.description" #newDesc="ngModel">
-            <p class='error' *ngIf="newDesc.invalid && (newDesc.dirty || newDesc.touched)">Description not complete</p>
-            <p class='error' *ngIf="error['description']">{{error['description']['message']}}</p>
+            <input type="name" required minlength="3" maxlength="24" class="form-control" name="name" [(ngModel)]="reviewBelt['name']" #newName="ngModel" placeholder="Enter NewName here..">
+            <p class='error' *ngIf="newName.invalid && (newName.dirty || newName.touched)">Name not complete</p>
+            <!-- <p class='error' *ngIf="Name.errors">Invalid title input</p> -->
+            <p class='error' *ngIf="error['review']">{{error['review']['name']['message']}}</p>
+            <p class='error' *ngIf="error['title']">Review info cannot be entered without valid "Title"</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="star" class="col-sm-2 col-form-label">Stars</label>
+          <div class="col-sm-10">
+            <select class="custom-select" name="star" [(ngModel)]="reviewBelt.star">
+              <option selected value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <p class='error' *ngIf="error['title']">Review info cannot be entered without valid "Title"</p>
+            <p class='error' *ngIf="error['review']">{{error['review']['star']['message']}}</p>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="review" class="col-sm-2 col-form-label">Your Review</label>
+          <div class="col-sm-10">
+            <textarea required minlength="3" maxlength="50" class="form-control" name="review" [(ngModel)]="reviewBelt.review" #newDesc="ngModel"></textarea>
+            <p class='error' *ngIf="newDesc.invalid && (newDesc.dirty || newDesc.touched)">Review not complete</p>
+            <p class='error' *ngIf="error['review']">{{error['review']['review']['message']}}</p>
+            <p class='error' *ngIf="error['title']">Review info cannot be entered without valid "Title"</p>
           </div>
         </div>
         <div class="form-group row">
           <div class="col-sm-10">
-            <button *ngIf="newTitle.valid && newDesc.valid" type="submit" class="btn btn-primary">Create!</button>
-            <p *ngIf="success">{{success}}</p>
+            <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+            <button *ngIf="newTitle.valid && newDesc.valid" type="submit" class="btn btn-primary">Submit</button>
+            <!-- <p *ngIf="success">{{success}}</p> -->
             <!-- <p>{{editProduct.title | json}} {{editProduct.price | json}}</p> -->
           </div>
+          <a [routerLink]="['/movies']" class="btn btn-primary">Cancel</a>
         </div>
       </form>
-      <a [routerLink]="['/all']" class="btn btn-primary">Back to show all</a>
       <br><br>
       <h5>The submit buttom will appear after valid inputs</h5>
 </div>

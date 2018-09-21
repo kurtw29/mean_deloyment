@@ -11,6 +11,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { HomeComponent } from './home/home.component';
 import { EditComponent } from './edit/edit.component';
 import { NewComponent } from './new/new.component';
+import { EditChildComponent } from './edit-child/edit-child.component';
+import { WriteComponent } from './write/write.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { NewComponent } from './new/new.component';
     PagenotfoundComponent,
     HomeComponent,
     EditComponent,
-    NewComponent
+    NewComponent,
+    EditChildComponent,
+    WriteComponent
   ],
   imports: [
     BrowserModule,
