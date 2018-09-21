@@ -107,7 +107,7 @@ app.delete("/belt/:id", (req, res) => {
 
 app.delete("/beltReview/:mvid&:_id", (req, res) => {
     console.log("delete(beltReview), req.params: ", req.params)
-    Belt.update({_id:req.params.mvid}, {$pull: {reviewing: {_$in: {_id:req.params._id}}}})
+    Belt.update({_id:req.params.mvid}, {$pull: {reviewing:{_id:req.params._id}}})
     .then(
         data => {
             console.log('finding movie to delete true')
